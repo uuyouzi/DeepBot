@@ -1,12 +1,12 @@
 module github.com/For-ACGN/DeepBot
 
-go 1.23
+go 1.25.0
 
 require (
-	github.com/chromedp/chromedp v0.13.1
+	github.com/chromedp/chromedp v0.13.2
 	github.com/cohesion-org/deepseek-go v1.2.6
 	github.com/pelletier/go-toml/v2 v2.2.3
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	github.com/traefik/yaegi v0.16.1
 	github.com/wdvxdr1123/ZeroBot v1.8.1
 
@@ -16,7 +16,7 @@ require (
 require (
 	github.com/FloatTech/ttl v0.0.0-20240716161252-965925764562 // indirect
 	github.com/RomiChan/websocket v1.4.3-0.20220227141055-9b2c6168c9c5 // indirect
-	github.com/chromedp/cdproto v0.0.0-20250222051814-50c6cb17f10a // indirect
+	github.com/chromedp/cdproto v0.0.0-20250319231242-a755498943c8 // indirect
 	github.com/chromedp/sysutil v1.1.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-json-experiment/json v0.0.0-20250211171154-1ae217ad3535 // indirect
