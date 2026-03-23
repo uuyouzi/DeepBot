@@ -60,7 +60,7 @@ func (bot *DeepBot) buildSTM(ctx *zero.Ctx) {
 	params := make(zero.Params)
 	params["group_id"] = ctx.Event.GroupID
 	params["message_seq"] = 0
-	params["count"] = 500
+	params["count"] = 300
 
 	resp := ctx.CallAction("get_group_msg_history", params)
 	if resp.Status != "ok" {
@@ -206,10 +206,10 @@ content中有三类消息:
 	fmt.Println(len(prompt))
 
 	req := &ChatRequest{
-		Model:       deepseek.DeepSeekReasoner,
-		Temperature: 1.3,
+		Model:       deepseek.DeepSeekChat,
+		Temperature: 0,
 		TopP:        1,
-		MaxTokens:   2048,
+		MaxTokens:   8192,
 	}
 
 	user := new(user)
