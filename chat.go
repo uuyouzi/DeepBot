@@ -204,6 +204,11 @@ func (bot *DeepBot) onMessage(ctx *zero.Ctx) {
 		bot.sendText(ctx, "非法模型名称")
 		return
 	}
+	if !user.canToolCall() {
+		req.Tools = nil
+		req.ToolChoice = nil
+	}
+
 	resp, err := bot.chat(req, user, msg)
 	if err != nil {
 		log.Printf("failed to on message: %s\n", err)
@@ -295,10 +300,6 @@ func (bot *DeepBot) onPoke(ctx *zero.Ctx) {
 }
 
 func (bot *DeepBot) chat(req *ChatRequest, user *user, msg string) (*chatResp, error) {
-	if !user.canToolCall() {
-		req.Tools = nil
-		req.ToolChoice = nil
-	}
 	var err error
 	for i := 0; i < 3; i++ {
 		var resp *chatResp
@@ -347,9 +348,9 @@ func (bot *DeepBot) tryChat(req *ChatRequest, user *user, msg string) (*chatResp
 	var messages []ChatMessage
 	// build and append system prompt
 	character := user.getCharacter()
-	if len(req.Tools) > 0 && req.Model != deepseek.DeepSeekReasoner {
-		character += "\n\n" + promptToolCall
-	}
+	// if len(req.Tools) > 0 && req.Model != deepseek.DeepSeekReasoner {
+	// 	character += "\n\n" + promptToolCall
+	// }
 	if character != "" {
 		messages = append(messages, ChatMessage{
 			Role:    deepseek.ChatMessageRoleSystem,
